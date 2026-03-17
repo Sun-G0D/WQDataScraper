@@ -1,8 +1,13 @@
-import json, csv
+import json, csv, os
 from wqb import WQBSession
+from dotenv import load_dotenv
 
+load_dotenv()
+
+email = os.getenv("WQB_EMAIL")
+password = os.getenv("WQB_PASSWORD")
 # Authenticate (session auto-refreshes tokens)
-wqbs = WQBSession(('your_email@example.com', 'your_password'))
+wqbs = WQBSession((email, password))
 
 # Auto-paginate through ALL data fields
 all_fields = []
